@@ -1,8 +1,11 @@
 import { PencilFill } from "react-bootstrap-icons";
 
-interface EditButtonProps { onClick: () => void; }
+interface EditButtonProps {
+    onClick: () => void;
+}
 
-const EditButton = ({ onClick }: EditButtonProps) => {
+export const EditButton = ({ onClick }: EditButtonProps) => {
+
     return (
         <PencilFill
             color="#FBC02D"
@@ -13,4 +16,5 @@ const EditButton = ({ onClick }: EditButtonProps) => {
         />
     )
 }
-export default EditButton
+
+export default EditButton;

@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import ClienteService from "../../services/ClienteService";
 
-import { ModalType } from "../../types/modal-type/ModalType";
+import { ModalType } from "../../types/ModalType/ModalType";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Button, Form, Modal } from "react-bootstrap";

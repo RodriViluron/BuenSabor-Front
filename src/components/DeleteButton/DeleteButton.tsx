@@ -1,6 +1,12 @@
 import { TrashFill } from "react-bootstrap-icons";
-interface DeleteButtonProps { onClick: () => void; }
-const DeleteButton = ({ onClick }: DeleteButtonProps) => {
+
+
+interface DeleteButtonProps {
+    onClick: () => void;
+}
+
+export const DeleteButton = ({ onClick }: DeleteButtonProps) => {
+
     return (
         <TrashFill
             color="#D32F2F"
@@ -11,4 +17,5 @@ const DeleteButton = ({ onClick }: DeleteButtonProps) => {
         />
     )
 }
-export default DeleteButton
+
+export default DeleteButton;

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { Cliente } from "../../types/Cliente"
 import Button from 'react-bootstrap/Button';
 import ClienteService from "../../services/ClienteService";
-import { ModalType } from "../../types/modal-type/ModalType";
-import Loader from "../loader/Loader";
+import { ModalType } from "../../types/ModalType/ModalType";
+import Loader from "../Loader/Loader";
 import { Table } from "react-bootstrap";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
@@ -29,10 +29,8 @@ const TablaClientes = () => {
             apellido: "",
             telefono: "",
             email: "",
+            eliminado: false,
             usuario: "",
-            fechaAlta: new Date(),
-            fechaModificacion: new Date(),
-            fechaBaja: new Date()
         };
     };
     const [cliente, setCliente] = useState<Cliente>(initializeNewClient);

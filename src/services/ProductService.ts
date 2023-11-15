@@ -1,26 +1,49 @@
-import { Producto } from "../types/Producto";
-const BASE_URL = 'http://localhost:8088'
-export const ProductoService = {
 
-    //get all
-    getProductos: async (): Promise<Producto[]> => {
-        const response = await fetch(`${BASE_URL}/api/productos/all`);
+import Producto from "../types/Producto";
+
+const BASE_URL = 'http://localhost:8080/';
+
+export const ProductService = {
+    getProducts: async (): Promise<Producto[]> => {
+        const response = await fetch(`${BASE_URL}/products`);
         const data = await response.json();
         return data;
-
     },
-    //getone
-    getProducto: async (id: number): Promise<Producto> => {
-        const response = await fetch(`${BASE_URL}/productos/${id}`)
-        const data = await response.json();
-        return data;
 
-    },
-    searchProducto: async (filter: string): Promise<Producto[]> => {
-        const response = await fetch(`${BASE_URL}/api/productos/search?filtro=${filter}`)
+    getProduct: async (id: number): Promise<Producto> => {
+        const response = await fetch(`${BASE_URL}/products/${id}`);
         const data = await response.json();
         return data;
+    },
+
+    createProduct: async (product: Producto): Promise<Producto> => {
+        const response = await fetch(`${BASE_URL}/products`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        });
+        const data = await response.json();
+        return data;
+    },
+
+    updateProduct: async (id: number, product: Producto): Promise<Producto> => {
+        const response = await fetch(`${BASE_URL}/products/${id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        });
+        const data = await response.json();
+        return data;
+    },
+
+    deleteProduct: async (id: number): Promise<void> => {
+        await fetch(`${BASE_URL}/products/${id}`, {
+            method: "DELETE"
+        });
     }
 
-}
-//http://localhost:8088/api/productos/search?filtro=
+};
