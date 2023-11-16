@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import EmpleadoService from "../../services/EmpleadoService";
 
 import { ModalType } from "../../types/ModalType/ModalType";
-import * as Yup from "yup";
+import * as Yup from 'yup';
 import { useFormik } from "formik";
 import { Button, Form, Modal } from "react-bootstrap";
 import Empleado from "../../types/Empleado";

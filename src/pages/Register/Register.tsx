@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Modal, Form, Button } from 'react-bootstrap';
+import { AuthService } from '../../services/AuthService';
+
+import { toast } from 'react-toastify';
 
 const Register: React.FC = () => {
     const navigate = useNavigate();
@@ -26,38 +29,23 @@ const Register: React.FC = () => {
             telefono: '',
             email: '',
         },
-        validationSchema,
+
+        validationSchema: validationSchema,
+
         onSubmit: async (values) => {
-            //navigate('/login');
             try {
-                const response = await fetch('http://localhost:8080/auth/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(values),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error en la solicitud');
-                }
-
-                const data = await response.json();
-                console.log('Respuesta del backend:', data);
-
-                // Redirigir al usuario a la página de inicio de sesión después del registro
-                navigate('/login');
-
+              const token = await AuthService.register(values);
+              console.log("Registro exitoso. Token:", token);
+              navigate('/');
+              toast.success('Registro exitoso');
             } catch (error) {
-                // Manejar errores de red u otros errores
-                console.error('Error:', error);
+              console.error("Error al iniciar sesión:");
+              
             }
-        },
+          },
     });
-    const handleShow = () => {
-        setShow(true);
-
-    };
+    
+    
 
     const handleHide = () => {
         setShow(false);

@@ -8,7 +8,7 @@ const Header: React.FC = () => {
     const isLoggedIn: boolean = useIsLoggedIn();
     // Handlers
     function onLogOut() {
-        window.localStorage.removeItem('isLoggedIn');
+        window.localStorage.removeItem('token');
         navigate('/');
     }
     return (
@@ -33,6 +33,12 @@ const Header: React.FC = () => {
                                 <NavDropdown.Item onClick={() => navigate('/empleados')}>Empleados</NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => navigate('/productos')}>Productos</NavDropdown.Item>
                             </NavDropdown>
+                            
+                            
+                            {!isLoggedIn && <Nav.Link onClick={() => navigate('/login')}>Log In</Nav.Link>}
+
+                            {!isLoggedIn && <Nav.Link onClick={() => navigate('/register')}>Registrar</Nav.Link>}
+
                             {isLoggedIn && <Nav.Link onClick={onLogOut}>Log Out</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
