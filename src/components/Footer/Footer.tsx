@@ -20,7 +20,7 @@ const Footer = () => {
                         <div className="flex flex-col sm:flex-row ">
                             <h6 className="mb-4 flex flex-col gap-3 text-sm sm:ml-6 sm:mt-0 sm:flex-row sm:text-base">
                                 <a 
-                                    href="https://github.com/FrancoMinati"
+                                    href="https://github.com/RodriViluron"
                                     rel="noopener noreferrer"
                                     style={{ marginRight: '1rem' }}
                                     className="ml-1 flex gap-2 mr-4"
@@ -30,7 +30,7 @@ const Footer = () => {
                                     <span className="ml-4">         Viluron             </span>
                                 </a>
                                 <a
-                                    href="https://github.com/octaviofarinia"
+                                    href="https://github.com/Teneze"
                                     rel="noopener noreferrer"
                                     style={{ marginRight: '1rem' }}
                                     className="mr-4 ml-1 flex gap-2 text-sm text-base"
@@ -40,7 +40,7 @@ const Footer = () => {
                                     <span className="ml-4">         Tenerini</span>
                                 </a>
                                 <a
-                                    href="https://github.com/octaviofarinia"
+                                    href="https://github.com/EmiAmin13"
                                     rel="noopener noreferrer"
                                     style={{ marginRight: '1rem', paddingRight: '1rem'}}
                                     className="ml-1 flex gap-2 text-sm text-base"
@@ -54,7 +54,7 @@ const Footer = () => {
                         <div className="flex flex-col sm:flex-row ">
                         <h6 className="mb-4 flex flex-col gap-3 text-sm sm:ml-6 sm:mt-0 sm:flex-row sm:text-base">
                                 <a 
-                                    href="https://github.com/FrancoMinati"
+                                    href="https://github.com/agusgarcia18"
                                     rel="noopener noreferrer"
                                     style={{ marginRight: '1rem' }}
                                     className="ml-1 flex gap-2 mr-4"
@@ -64,7 +64,7 @@ const Footer = () => {
                                     <span className="ml-4">         Colombo</span>
                                 </a>
                                 <a
-                                    href="https://github.com/octaviofarinia"
+                                    href="https://github.com/andresnovello"
                                     rel="noopener noreferrer"
                                     style={{ marginRight: '1rem' }}
                                     className="mr-4 ml-1 flex gap-2 text-sm text-base"
@@ -74,7 +74,7 @@ const Footer = () => {
                                     <span className="ml-4">         Novello</span>
                                 </a>
                                 <a
-                                    href="https://github.com/octaviofarinia"
+                                    href="https://github.com/joaPrato"
                                     rel="noopener noreferrer"
                                     style={{ marginRight: '1rem', paddingRight: '1rem'}}
                                     className="ml-1 flex gap-2 text-sm text-base"
