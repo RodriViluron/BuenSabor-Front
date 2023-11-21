@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Producto } from "../../types/Producto";
 import { ProductService } from "../../services/ProductoService";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 import { Button, Table } from "react-bootstrap";
 import { ModalType } from "../../types/ModalType/ModalType";
 import ProductModal from "../ProductoModal/ProductoModal";

@@ -73,6 +73,7 @@ export const ProductService = {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(producto)
             });
@@ -103,6 +104,7 @@ export const ProductService = {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(producto)
             });
