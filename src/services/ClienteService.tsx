@@ -1,4 +1,6 @@
+import decodeJwtToken from "../hooks/decodeJwtToken";
 import Cliente from "../types/Cliente";
+import { Domicilio } from "../types/Domicilio";
 
 
 const BASE_URL = "http://localhost:8080";
@@ -178,7 +180,89 @@ const ClienteService = {
             console.log('Error al eliminar cliente', error);
             throw error;
         }
-    }
+    },
+
+    buscarDomiciliosCliente :  async () : Promise<Domicilio> => {
+
+        try{
+            const token= window.localStorage.getItem('token');
+            if(!token){
+                throw new Error('No se encontro el token');
+            }
+            const decodeToken =decodeJwtToken(token);
+            const username= decodeToken.sub;
+            console.log('usuario: ',username)
+            const response =await fetch(`${BASE_URL}/api/v1/clientes/buscarDomiciliosCliente/?username=${decodeToken.sub}`,{
+                headers: {'Authorization': `Bearer ${token}`},
+            });
+            const data= await response.json();
+            return data;
+        }
+        catch (error) {
+            console.error('Error al recuperar domicilios desde el service');
+            throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+          }
+        
+    },
+
+    buscarCliente :async () : Promise<Cliente> => {
+
+        try{
+            const token= window.localStorage.getItem('token');
+            if(!token){
+                throw new Error('No se encontro el token');
+            }
+            const decodeToken =decodeJwtToken(token);
+            const username= decodeToken.sub;
+            const response =await fetch(`${BASE_URL}/api/v1/clientes/buscarClente?username=${username}`,{
+                headers: {'Authorization': `Bearer ${token}`},
+            });
+
+            if (response.ok) {
+                console.log('Cliente buscado con exito');
+            }
+            const data= await response.json();
+            return data;
+        }
+        catch (error) {
+            console.error('Error al recuperar Cliente');
+            throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+          }
+        
+    },
+
+
+    modificarCliente:async (cliente:Cliente) :Promise<Cliente> =>{
+
+        try{
+            const token= window.localStorage.getItem('token');
+            if(!token){
+                throw new Error('No se encontro el token');
+            }
+
+            
+
+            const response = await fetch(`${BASE_URL}/api/v1/clientes/modificarCliente`, {
+                method: 'PUT',
+                headers: {
+                    //'Authorization': `Bearer ${token}`,
+                    'Content-Type':'application/json',
+                },
+                body: JSON.stringify(cliente)
+            });
+    
+            if (response.ok) {
+                console.log('Cliente modificado con exito');
+            }
+    
+            const data = await response.json();
+            return data;
+        }
+        catch (error) {
+            console.error('Error al modificar Cliente');
+            throw error;
+          }
+    },
 
 }
 

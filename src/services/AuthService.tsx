@@ -1,81 +1,70 @@
 import { LoginRequest } from "../types/LoginRequest";
 import RegisterRequest from "../types/RegisterRequest";
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL= 'http://localhost:8080';
 
 export const AuthService = {
-  
-  login: async (login: LoginRequest): Promise<string> => {
 
-    try {
-      const response = await fetch(`${BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(login),
-      });
+    login: async (loginRequest:LoginRequest) :Promise<string> =>{
 
-      if (!response.ok) {
-        throw new Error('Inicio de sesión fallido');
-      }
+        try{
+            const response= await fetch(`${BASE_URL}/auth/login`,{
+                method:'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(loginRequest),
+            });
 
-      // Recuperar el token del cuerpo de la respuesta JSON
-      const { token } = await response.json();
+            if(!response.ok){
+                throw new Error('Inicion de sesion fallido');
+            }
 
-      if (!token) {
-        throw new Error('No se encontró el token en las cabeceras de la respuesta');
-      }
+            const data = await response.json(); //la funcion json desentrama la respuesta y la pone como objeto, {toke} le dije que va a extrer el aturbuto 'token'
+            const token = data.token;
 
-      // Almacena el token en localStorage
-      localStorage.setItem('token', token);
+            if(token==null){
+                throw new Error ('No se encontro el token');
+            }
 
-      // Puedes también almacenar otros datos relacionados con la sesión si es necesario
-      // localStorage.setItem('username', loginRequest.username);
+            window.localStorage.setItem('token',token);
+            
 
-      // Devolver el token como un string
-      return token;
+            return token;
+        }
+        catch (error) {
+            console.error('Error al iniciar sesión desde el service');
+            throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+          }
+    },
 
-    } catch (error) {
-      console.error('Error al iniciar sesión:');
-      throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-  },
+    register: async (registerRequest: RegisterRequest):Promise<string> => {
 
-  register: async (registerRequest: RegisterRequest): Promise<string> => {
+        try{
+            const response=  await fetch(`${BASE_URL}/auth/register`,{
+                method:'POST',
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify(registerRequest),
+            });
 
-    try {
-      const response = await fetch(`${BASE_URL}/auth/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(registerRequest),
-      });
+            if (!response.ok){
+                throw new Error('Registro Fallido');
+            }
 
-      if (!response.ok) {
-        throw new Error('Registro fallido');
-      }
+            const data = await response.json();
+            const token = data.token;
 
-      // Recuperar el token del cuerpo de la respuesta JSON
-      const { token } = await response.json();
+            if(token==null){
+                throw new Error('No se encontro el token en la respuesta');
+            }
 
-      if (!token) {
-        throw new Error('No se encontró el token en las cabeceras de la respuesta');
-      }
+            window.localStorage.setItem('token',token);
+            
 
-      // Almacena el token en localStorage
-      localStorage.setItem('token', token);
+            return token;
+            }
+            catch (error) {
+                console.error('Error al registrar usuario desde el service');
+                throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+              }
 
-      // Puedes también almacenar otros datos relacionados con la sesión si es necesario
-      // localStorage.setItem('username', loginRequest.username);
-
-      // Devolver el token como un string
-      return token;
-
-    } catch (error) {
-      console.error('Error al registrar');
-      throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
-    }
-  }
+        }
 };

@@ -1,0 +1,9 @@
+.logo-container {
+  max-height: 30px; /* Ajusta según tu preferencia */
+  margin-right: 15px;
+}
+
+.logo-img {
+  height: 32px; /* Ajusta según tu preferencia */
+  width: auto;
+}

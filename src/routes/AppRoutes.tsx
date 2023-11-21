@@ -5,8 +5,7 @@ import ProductosPage from "../pages/ProductosPage";
 import EmpleadosPage from "../pages/EmpleadosPage";
 import HomePage from "../pages/HomePage";
 
-import RegisterPage from "../pages/RegisterPage";
-import LoginPage from "../pages/LoginPage";
+
 //import PrivateRoute from "./PrivateRoute";
 
 
@@ -19,9 +18,6 @@ const AppRoutes: React.FC = () => {
         <Route path="/clientes" element={<ClientesPage />} />
         <Route path="/empleados" element={<EmpleadosPage />}/>
 
-        <Route path="/login" element={<LoginPage />} />
-
-        <Route path="/register" element={<RegisterPage />} />
       </Routes>
       
       

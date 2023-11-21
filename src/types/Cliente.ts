@@ -5,6 +5,6 @@ export interface Cliente {
     telefono: string;
     email: string;
     eliminado: boolean;
-    usuario: string;
+    
 }
 export default Cliente;

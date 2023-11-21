@@ -3,7 +3,7 @@ import { Cliente } from "../../types/Cliente"
 import Button from 'react-bootstrap/Button';
 import ClienteService from "../../services/ClienteService";
 import { ModalType } from "../../types/ModalType/ModalType";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 import { Table } from "react-bootstrap";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
@@ -30,7 +30,7 @@ const TablaClientes = () => {
             telefono: "",
             email: "",
             eliminado: false,
-            usuario: "",
+            
         };
     };
     const [cliente, setCliente] = useState<Cliente>(initializeNewClient);

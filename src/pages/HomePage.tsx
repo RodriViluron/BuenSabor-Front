@@ -1,15 +1,16 @@
+import CarouselHome from "../components/CarouselHome/CarouselHome";
+import Menu from "../components/Menu/Menu";
 
-import CarrouselHome from "../components/CarrouselHome/CarrouselHome";
+
 
 
 
 
 function HomePage() {
-    return (
+    return(
         <>
-            
-            <CarrouselHome/>
-           
+            <CarouselHome/>
+            <Menu/>
         </>
     )
 }

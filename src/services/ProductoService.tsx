@@ -160,6 +160,13 @@ export const ProductService = {
             console.log('Error al eliminar producto', error);
             throw error;
         }
+    },
+
+    buscarDisponibles : async (): Promise<Producto[]> =>{
+        const response = await fetch(`${BASE_URL}/api/v1/productos/buscarDisponibles`); 
+        const data= await response.json();
+        return data;
+
     }
 
 };
