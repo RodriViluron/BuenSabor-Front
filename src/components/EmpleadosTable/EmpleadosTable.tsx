@@ -8,11 +8,14 @@ import { Table } from "react-bootstrap";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EmpleadoModal from "../EmpleadoModal/EmpleadoModal";
+import { number } from "yup";
 
 const TablaEmpleados = () => {
+
     const [empleados, setEmpleados] = useState<Empleado[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [refreshData, setRefreshData] = useState(false);
+
     useEffect(() => {
         const fetchEmpleados = async () => {
             const empleados = await EmpleadoService.getEmpleados();
@@ -21,7 +24,9 @@ const TablaEmpleados = () => {
         };
         fetchEmpleados();
     }, [refreshData]);
+
     console.log(JSON.stringify(empleados, null, 2));
+
     const initializeNewEmpleado = (): Empleado => {
         return {
             id: 0,
@@ -37,17 +42,23 @@ const TablaEmpleados = () => {
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState<ModalType>(ModalType.NONE);
     const [title, setTitle] = useState("");
+
     const handleClick = (newTitle: string, emp: Empleado, modal: ModalType) => {
         setTitle(newTitle);
         setModalType(modal)
         setEmpleado(emp);
         setShowModal(true);
     };
+
+
+
     return (
         <>
+            
             <Button variant="dark" style={{ float: 'right', margin: "1rem" }} onClick={() => handleClick("Nuevo Empleado", initializeNewEmpleado(), ModalType.CREATE)}>
                 Añadir empleado
             </Button>
+
             {isLoading ? <Loader /> : (
                 <Table hover>
                     <thead>

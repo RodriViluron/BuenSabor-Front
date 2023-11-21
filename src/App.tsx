@@ -6,16 +6,24 @@ import AppRoutes from "./routes/AppRoutes";
 
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Suspense } from "react";
+import { ToastContainer, Container } from "react-bootstrap";
+import Loader from "./components/Loader/Loader";
 
 
 function App() {
   return (
-    
+
     <>
+      <ToastContainer />
       <Router>
-        <Header/>
+        <Header />
+        <Container style={{ minHeight: '100vh', minWidth: '100%', padding: '0' }}>
+          <Suspense fallback={<Loader />}>
             <AppRoutes />
-        <Footer/>
+          </Suspense>
+        </Container>
+        <Footer />
       </Router>
     </>
 

@@ -3,6 +3,7 @@ import Empleado from "../types/Empleado";
 
 const BASE_URL = "http://localhost:8080";
 
+
 const EmpleadoService = {
 
     getEmpleados: async (): Promise<Empleado[]> => {
@@ -73,6 +74,7 @@ const EmpleadoService = {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(empleado)
             });
@@ -99,10 +101,11 @@ const EmpleadoService = {
             // Recuperar el token del localStorage
             const token = localStorage.getItem('token');
     
-            const response = await fetch(`${BASE_URL}/api/v1/empleados/modificarEmpleado/${id}`, {
+            const response = await fetch(`${BASE_URL}/api/v1/empleados/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(empleado)
             });

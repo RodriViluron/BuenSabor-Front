@@ -9,8 +9,6 @@ import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 //import PrivateRoute from "./PrivateRoute";
 
-const Admin = React.lazy(() => import('../pages/admin/Admin'));
-
 
 const AppRoutes: React.FC = () => {
   return (
@@ -20,7 +18,6 @@ const AppRoutes: React.FC = () => {
         <Route path="/productos" element={<ProductosPage />} />
         <Route path="/clientes" element={<ClientesPage />} />
         <Route path="/empleados" element={<EmpleadosPage />}/>
-        <Route path="/admin" element={<Admin />} />
 
         <Route path="/login" element={<LoginPage />} />
 

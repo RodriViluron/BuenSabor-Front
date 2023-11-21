@@ -1,10 +1,12 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { ModalType } from "../../types/ModalType/ModalType";
 import { Producto } from "../../types/Producto";
+
 //dependencias para validar formularios
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { ProductService } from "../../services/ProductoService";
+
 //notificaciones
 import { toast } from 'react-toastify';
 
@@ -66,8 +68,8 @@ const ProductModal = ({ show, onHide, title, prod, modalType, refreshData }: Pro
             denominacion: Yup.string().required('El titulo es requerido'),
             descripcion: Yup.string().required('La descripcion es requerida'),
             tiempoEstimadoCocina: Yup.number().min(0).required('El tiempo de cocina es requerido'),
-            pricioVenta: Yup.number().min(0).required('El precio de venta es requerido'),
-            pricioCosto: Yup.number().min(0).required('El precio de costo es requerido'),
+            precioVenta: Yup.number().min(0).required('El precio de venta es requerido'),
+            precioCosto: Yup.number().min(0).required('El precio de costo es requerido'),
             urlImagen: Yup.string().required('La URL de la imagen es requerida'),
         });
     };
@@ -189,7 +191,7 @@ const ProductModal = ({ show, onHide, title, prod, modalType, refreshData }: Pro
                                     <Form.Control
                                         name="precioCosto"
                                         type="number"
-                                        value={formik.values.precioVenta || ''}
+                                        value={formik.values.precioCosto || ''}
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         isInvalid={Boolean(formik.errors.precioCosto && formik.touched.precioCosto)}

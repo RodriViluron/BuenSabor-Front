@@ -4,14 +4,7 @@ import Cliente from "../types/Cliente";
 const BASE_URL = "http://localhost:8080";
 
 const ClienteService = {
-    
-    /*
-    getClientes: async (): Promise<Cliente[]> => {
-        const response = await fetch(`${BASE_URL}/api/v1/clientes/all`);
-        const data = await response.json();
-        return data;
-    },
-    */
+
 
     getClientes: async (): Promise<Cliente[]> => {
 
@@ -41,14 +34,6 @@ const ClienteService = {
         }
     },
 
-    /*
-    getCliente: async (id: number): Promise<Cliente> => {
-        const response = await fetch(`${BASE_URL}/api/v1/clientes/${id}`);
-        const data = await response.json();
-        return data;
-    },
-    */
-
     getCliente: async (id: number): Promise<Cliente[]> => {
 
         try {
@@ -77,19 +62,6 @@ const ClienteService = {
         }
     },
 
-
-    /*
-    createCliente: async (cliente: Cliente): Promise<Cliente> => {
-        const response = await fetch(`${BASE_URL}/api/v1/clientes`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(cliente)
-        });
-        const data = await response.json();
-        return data;
-    },
-    */
-
     createCliente: async (cliente: Cliente): Promise<Cliente[]> => {
 
         try {
@@ -100,6 +72,7 @@ const ClienteService = {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(cliente)
             });

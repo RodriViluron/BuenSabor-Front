@@ -17,13 +17,17 @@ type EmpleadoModalProps = {
 };
 
 const EmpleadoModal = ({ show, onHide, title, modalType, emp, refreshData }: EmpleadoModalProps) => {
-    const handleSaveUpdate = async (em: Empleado) => {
+
+    const handleSaveUpdate = async (emp: Empleado) => {
         try {
-            const isNew = em.id === 0;
+            const isNew = emp.id === 0;
             if (isNew) {
-                await EmpleadoService.createEmpleado(em);
+                console.log("esto es lo q manda:", emp);
+                await EmpleadoService.createEmpleado(emp);
             } else {
-                await EmpleadoService.updateEmpleado(em.id, em);
+                console.log("esto es lo q manda:", emp);
+                await EmpleadoService.updateEmpleado(emp.id, emp);
+                
             }
             toast.success(isNew ? "Nuevo empleado añadido" : "Empleado actualizado", { position: "top-center", });
             onHide();
@@ -33,6 +37,7 @@ const EmpleadoModal = ({ show, onHide, title, modalType, emp, refreshData }: Emp
             toast.error('Se ha producido un error');
         }
     };
+
     const handleDelete = async () => {
         try {
             await EmpleadoService.deleteEmpleado(emp.id);
@@ -44,6 +49,7 @@ const EmpleadoModal = ({ show, onHide, title, modalType, emp, refreshData }: Emp
             toast.error('Se ha producido un error');
         }
     };
+
     const validationSchema = () => {
         return Yup.object().shape({
             //id: Yup.number().integer().min(0),
@@ -54,6 +60,7 @@ const EmpleadoModal = ({ show, onHide, title, modalType, emp, refreshData }: Emp
             //usuario: Yup.string().required('Por favor ingrese el usuario'),
         });
     };
+
     const formik = useFormik({
         initialValues: emp,
         validationSchema: validationSchema(),
@@ -61,6 +68,7 @@ const EmpleadoModal = ({ show, onHide, title, modalType, emp, refreshData }: Emp
         validateOnBlur: true,
         onSubmit: (obj: Empleado) => handleSaveUpdate(obj),
     });
+
     return (
         <>
             {modalType === ModalType.DELETE ? (

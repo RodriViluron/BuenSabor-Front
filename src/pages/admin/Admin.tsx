@@ -2,9 +2,9 @@ import Alert from "react-bootstrap/Alert";
 import * as React from 'react';
 import Spinner from "react-bootstrap/Spinner";
 
-import useProduct from "./hooks/useProduct";
+import useProduct from "../../components/AdminComponents/hooks/useProduct";
 
-const ProductsTable = React.lazy(() => import('./components/ProductTable'));
+const ProductsTable = React.lazy(() => import('../../components/AdminComponents/components/ProductTable'));
 
 const Admin: React.FC = () => {
   // Utils
