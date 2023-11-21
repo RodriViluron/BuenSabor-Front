@@ -34,7 +34,7 @@ export const ProductService = {
     },
 
 
-    getProducto: async (id: number): Promise<Producto[]> => {
+    getProducto: async (id: number): Promise<Producto> => {
 
         try {
             // Recuperar el token del localStorage
