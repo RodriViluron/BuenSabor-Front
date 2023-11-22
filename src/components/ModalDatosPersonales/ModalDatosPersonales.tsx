@@ -5,6 +5,7 @@ import * as Yup  from 'yup'
 import Cliente from "../../types/Cliente";
 import { Button, Modal } from "react-bootstrap";
 import ClienteService from "../../services/ClienteService";
+import { useNavigate}from 'react-router-dom'
 
 type ModalDatosPersonalesProps ={
     show : boolean;
@@ -14,6 +15,8 @@ type ModalDatosPersonalesProps ={
 
 
 const ModalDatosPersonales = ({show,onHide}:ModalDatosPersonalesProps) =>{
+
+    const navigate = useNavigate();
 
     const [cliente, setCliente] = useState<Cliente | undefined>(undefined);
     const [modificando,setModificando]=useState(false);
@@ -176,18 +179,29 @@ const ModalDatosPersonales = ({show,onHide}:ModalDatosPersonalesProps) =>{
                         </div>   
                     </form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={onHide}>
-                        Cancelar
+                <Modal.Footer className="justify-content-between w-100">
+                    {!modificando?(
+                    <Button variant="success" onClick={() =>{
+                        onHide();
+                        navigate('/domicilios');
+                        }}>
+                        Editar direcciones 
                     </Button>
-                    
-                    {modificando ? (
-                        <Button variant="success" onClick={() => formik.handleSubmit()}>
-                            Guardar 
+                    ):<div></div>}
+                    <div>
+                        <Button style={{ marginRight: '20px' }} variant="secondary" onClick={onHide}>
+                            Cancelar
                         </Button>
-                    ):  <Button variant="warning" onClick={()=>{setModificando(true)}}>
-                            Editar 
-                        </Button>}
+                        
+                        {modificando ? (
+                            <Button variant="success" onClick={() => formik.handleSubmit()}>
+                                Guardar 
+                            </Button>
+                        ):  <Button variant="warning" onClick={()=>{setModificando(true)}}>
+                                Editar 
+                            </Button>}
+                    </div>
+                    
                     
                 </Modal.Footer>
             </Modal>                             

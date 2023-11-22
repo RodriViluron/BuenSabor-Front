@@ -6,6 +6,7 @@ import EmpleadosPage from "../pages/EmpleadosPage";
 import HomePage from "../pages/HomePage";
 import IngredientesPage from "../pages/IngredientesPage";
 import UnidadMedidaPage from "../pages/UnidadMedidaPage";
+import DomiciliosPage from "../pages/DomiciliosPage";
 
 
 const PrivateRoute = React.lazy(() => import('./PrivateRoute'));
@@ -21,6 +22,7 @@ const AppRoutes: React.FC = () => {
         <Route element={<PrivateRoute element={<EmpleadosPage />} />} path="/empleados" />
         <Route element={<PrivateRoute element={<IngredientesPage />} />} path="/ingredientes" />
         <Route element={<PrivateRoute element={<UnidadMedidaPage />} />} path="/UnidadMedida" />
+        <Route element={<PrivateRoute element={<DomiciliosPage />} />} path="/domicilios" />
       </Routes>
       
       
