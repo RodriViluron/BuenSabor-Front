@@ -52,8 +52,6 @@ const ModalRubroProducto = ({ show, onHide, denominacion, rub, modalType, refres
 
   };
 
-
-
   //Función handleDelete (DELETE)
   const handleDelete = async () => {
     try {
@@ -174,7 +172,7 @@ const ModalRubroProducto = ({ show, onHide, denominacion, rub, modalType, refres
                       }}
                       isInvalid={formik.touched.rubroPadre && !!formik.errors.rubroPadre}
                     >
-                      <option value="">Seleccionar Rubro Padre</option>
+                      <option value=''>Seleccionar Rubro Padre</option>
                       {rubrosDisponibles.map((rubro) => (
                         <option key={rubro.id} value={rubro.id}>
                           {rubro.denominacion}
