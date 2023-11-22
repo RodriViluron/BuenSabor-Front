@@ -183,7 +183,7 @@ const ClienteService = {
         }
     },
 
-    buscarDomiciliosCliente :  async () : Promise<Domicilio> => {
+    buscarDomiciliosCliente :  async () : Promise<Domicilio[]> => {
 
         try{
             const token= window.localStorage.getItem('token');
@@ -193,7 +193,7 @@ const ClienteService = {
             const decodeToken =decodeJwtToken(token);
             const username= decodeToken.sub;
             console.log('usuario: ',username)
-            const response =await fetch(`${BASE_URL}/api/v1/clientes/buscarDomiciliosCliente/?username=${decodeToken.sub}`,{
+            const response =await fetch(`${BASE_URL}/api/v1/clientes/buscarDomiciliosCliente?username=${decodeToken.sub}`,{
                 headers: {'Authorization': `Bearer ${token}`},
             });
             const data= await response.json();
@@ -263,6 +263,38 @@ const ClienteService = {
             console.error('Error al modificar Cliente');
             throw error;
           }
+    },
+
+    agregarDomicilioCliente :async (domicilio:Domicilio) : Promise<Cliente> => {
+
+        try{
+            const token= window.localStorage.getItem('token');
+            if(!token){
+                throw new Error('No se encontro el token');
+            }
+            const decodeToken =decodeJwtToken(token);
+            const username= decodeToken.sub;
+            const response =await fetch(`${BASE_URL}/api/v1/clientes/agregarDomicilioCliente?username=${username}`,{
+                method:'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type':'application/json',
+                },
+                body: JSON.stringify(domicilio)
+                
+            });
+
+            if (response.ok) {
+                console.log('Cliente buscado con exito');
+            }
+            const data= await response.json();
+            return data;
+        }
+        catch (error) {
+            console.error('Error al recuperar Cliente');
+            throw error; // Re-lanza el error para que pueda ser manejado por el código que llama a esta función
+          }
+        
     },
 
 }
