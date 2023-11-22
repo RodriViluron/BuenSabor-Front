@@ -64,7 +64,7 @@ const UnidadMedid = () => {
 
     return (
         <>
-            <Button onClick={() => handleClick("Nueva unidad de Medida", initializeNewUnidadMedida(), ModalType.CREATE)}>
+            <Button variant="dark" style={{ float: 'right', margin: "1rem" }} onClick={() => handleClick("Nueva unidad de Medida", initializeNewUnidadMedida(), ModalType.CREATE)}>
                 Nueva Unidad Medida
             </Button>
 

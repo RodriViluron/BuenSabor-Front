@@ -69,7 +69,7 @@ const IngredientesTable = () => {
 
     return (
         <>
-            <Button onClick={() => handleClick("Nuevo Ingrediente", initializeNewIngrediente(), ModalType.CREATE)}>
+            <Button variant="dark" style={{ float: 'right', margin: "1rem" }} onClick={() => handleClick("Nuevo Ingrediente", initializeNewIngrediente(), ModalType.CREATE)}>
                 Nuevo Ingrediente
             </Button>
 

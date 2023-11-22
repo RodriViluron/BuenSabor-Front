@@ -3,7 +3,7 @@ import { Empleado } from "../../types/Empleado"
 import Button from 'react-bootstrap/Button';
 import EmpleadoService from "../../services/EmpleadoService";
 import { ModalType } from "../../types/ModalType/ModalType";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 import { Table } from "react-bootstrap";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
