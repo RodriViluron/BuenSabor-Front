@@ -1,25 +1,26 @@
 import "./Menu.css";
 import { useEffect, useState } from "react";
-import { Rubro } from "../../types/Rubro";
-import { RubroService } from "../../services/RubroService";
+
 import { Button, Card } from "react-bootstrap";
 import Loader from "../loader/Loader";
+import RubroProducto from "../../types/RubroProducto";
+import { RubroProductoService } from "../../services/RubroProductoService";
 
 
 const Menu =()=>{
 
-    const [rubros, setRubros] = useState<Rubro[]>([]);
+    const [rubroProductos, setRubros] = useState<RubroProducto[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const loadProducts = async () => {
           try {
-            const rubros = await RubroService.buscarRubrosProdDisponibles();
-            console.log('Rubros obtenidos con éxito');
-            setRubros(rubros);
+            const rubroProductos = await RubroProductoService.searchRubrosProdDisponibles();
+            console.log('RubroProductos obtenidos con éxito');
+            setRubros(rubroProductos);
             setIsLoading(false);
           } catch (error) {
-            console.error('Error al traer los rubros', error);
+            console.error('Error al traer los rubroProductos', error);
           }
         };
     
@@ -37,11 +38,11 @@ const Menu =()=>{
           {isLoading ? <Loader/>:(
             <div className="bg-dark">
               <h1 className="text-white text-center pt-3 pb-3">Menu</h1>
-              {rubros.map((rubro) => (
-                <div key={rubro.id} className="mb-3">
-                  <h2 className="text-white m-">{rubro.denominacion}</h2>
+              {rubroProductos.map((rubroProducto) => (
+                <div key={rubroProducto.id} className="mb-3">
+                  <h2 className="text-white m-">{rubroProducto.denominacion}</h2>
                   <div className="d-flex flex-wrap">
-                    {rubro.producto.map((producto) => (
+                    {rubroProducto.producto?.map((producto) => (
                       <div key={producto.id} className="m-4">
                         <Card className="bg-danger text-white" style={{ width: '18rem' } }>
                           <Card.Img variant="top" src={producto.urlImagen} className="min-heightImg"/>

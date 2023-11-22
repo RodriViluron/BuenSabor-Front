@@ -9,8 +9,6 @@ import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalDatosPersonales from "../ModalDatosPersonales/ModalDatosPersonales";
 import useIsLoggedIn from "../../hooks/useIsLoggedIn";
 
-
-
 const Header = ()=>{
 
   const navigate = useNavigate();  
@@ -76,7 +74,9 @@ const Header = ()=>{
                         <NavDropdown.Item onClick={() => { navigate('/productos') }}>Productos</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => { navigate('/clientes') }}>Clientes</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => { navigate('/ingredientes') }}>Ingredientes</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => { navigate('/UnidadMedida') }}>UnidadMedida</NavDropdown.Item>
+                      <NavDropdown.Item onClick={() => { navigate('/UnidadMedida') }}>UnidadMedida</NavDropdown.Item>
+                      <NavDropdown.Item onClick={() => { navigate('/rubroProductos') }}>Rubros de Productos</NavDropdown.Item>
+                      <NavDropdown.Item onClick={() => { navigate('/rubroIngredientes')}}>Rubros de Ingredientes</NavDropdown.Item>
                       </NavDropdown>
                       {!useIsLoggedIn() ? (
                         <div className="d-flex">
