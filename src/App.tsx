@@ -8,7 +8,7 @@ import AppRoutes from "./routes/AppRoutes";
 import 'react-toastify/dist/ReactToastify.css';
 import { Suspense } from "react";
 import { ToastContainer, Container } from "react-bootstrap";
-import Loader from "./components/Loader/Loader";
+import Loader from "./components/loader/Loader";
 
 
 function App() {
