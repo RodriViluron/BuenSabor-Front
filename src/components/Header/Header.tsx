@@ -75,6 +75,9 @@ const Header = ()=>{
                         <NavDropdown.Item onClick={() => { navigate('/empleados') }}>Empleados</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => { navigate('/productos') }}>Productos</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => { navigate('/clientes') }}>Clientes</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => { navigate('/ingredientes') }}>Ingredientes</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => { navigate('/UnidadMedida') }}>UnidadMedida</NavDropdown.Item>
+
                       </NavDropdown>
                       {!useIsLoggedIn() ? (
                         <div className="d-flex">
