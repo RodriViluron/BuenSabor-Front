@@ -71,10 +71,12 @@ const Header = ()=>{
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto ">
-                      <NavDropdown title="Administración" id="basic-nav-dropdown">
+                      <NavDropdown title="Administración" id="basic-nav-dropdown" className="paddingAdmin">
                         <NavDropdown.Item onClick={() => { navigate('/empleados') }}>Empleados</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => { navigate('/productos') }}>Productos</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => { navigate('/clientes') }}>Clientes</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => { navigate('/ingredientes') }}>Ingredientes</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => { navigate('/UnidadMedida') }}>UnidadMedida</NavDropdown.Item>
                       </NavDropdown>
                       {!useIsLoggedIn() ? (
                         <div className="d-flex">
@@ -86,7 +88,7 @@ const Header = ()=>{
                       ):null}
                       {useIsLoggedIn()?(
                       <div >
-                        <NavDropdown title="Mi cuenta" id="basic-nav-dropdown">
+                        <NavDropdown title="Mi cuenta" id="basic-nav-dropdown" className="paddingAdmin">
                         <NavDropdown.Item onClick={handleShowDatosPersonalesModal} ><i className="bi bi-person "></i>  Datos Personales</NavDropdown.Item>
                         <NavDropdown.Item  ><i className="bi bi-gear "></i>  Configuracion</NavDropdown.Item>
                         <NavDropdown.Item  onClick={()=>{onLogOut()}}><i className="bi bi-box-arrow-right"></i>  Cerrar Sesión</NavDropdown.Item>

@@ -20,3 +20,27 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.margin-topCompany {
+  margin-top: 2.9rem;
+}
+
+.margin-topPasion {
+  margin-top: 0.1rem;
+}
+
+.margin-rightRedes {
+  margin-right: 25rem;
+}
+
+.padding-leftIcon {
+  padding-left: 0.3rem;
+}
+
+.color-gris {
+  color: #bdb0b0;
+}
+
+.color-grisGit {
+  color: #8a7878;
+}

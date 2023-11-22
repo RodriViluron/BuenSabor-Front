@@ -6,18 +6,17 @@ import EmpleadosPage from "../pages/EmpleadosPage";
 import HomePage from "../pages/HomePage";
 
 
-//import PrivateRoute from "./PrivateRoute";
+const PrivateRoute = React.lazy(() => import('./PrivateRoute'));
 
 
 const AppRoutes: React.FC = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/productos" element={<ProductosPage />} />
-        <Route path="/clientes" element={<ClientesPage />} />
-        <Route path="/empleados" element={<EmpleadosPage />}/>
-
+        <Route element={<HomePage />} path="/"  />
+        <Route element={<PrivateRoute element={<ProductosPage />} />} path="/productos"  />
+        <Route element={<PrivateRoute element={<ClientesPage />} />} path="/clientes"  />
+        <Route element={<PrivateRoute element={<EmpleadosPage />} />} path="/empleados" />
       </Routes>
       
       

@@ -7,3 +7,7 @@
   height: 32px; /* Ajusta según tu preferencia */
   width: auto;
 }
+
+.paddingAdmin {
+  padding-top: 0.4rem;
+}

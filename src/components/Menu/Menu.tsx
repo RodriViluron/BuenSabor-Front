@@ -1,4 +1,4 @@
-
+import "./Menu.css";
 import { useEffect, useState } from "react";
 import { Rubro } from "../../types/Rubro";
 import { RubroService } from "../../services/RubroService";
@@ -39,13 +39,13 @@ const Menu =()=>{
               <h1 className="text-white text-center pt-3 pb-3">Menu</h1>
               {rubros.map((rubro) => (
                 <div key={rubro.id} className="mb-3">
-                  <h2 className="text-white m-4">{rubro.denominacion}</h2>
+                  <h2 className="text-white m-">{rubro.denominacion}</h2>
                   <div className="d-flex flex-wrap">
                     {rubro.producto.map((producto) => (
                       <div key={producto.id} className="m-4">
                         <Card className="bg-danger text-white" style={{ width: '18rem' } }>
-                          <Card.Img variant="top" src={producto.urlImagen} />
-                          <Card.Body>
+                          <Card.Img variant="top" src={producto.urlImagen} className="min-heightImg"/>
+                          <Card.Body className="min-height">
                             <Card.Title>{producto.denominacion}</Card.Title>
                             <Card.Text>{producto.descripcion}</Card.Text>
                             <Button variant="dark">Agregar al carrito</Button>
